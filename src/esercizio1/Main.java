@@ -31,11 +31,11 @@ public class Main {
                 if (userNumber >= 1 && userNumber <= 10) {
                     logger.info("Choose the position to insert the number (between 1 and 5)");
                     numberPosition = Integer.parseInt(myScanner.nextLine());
-                    if (numberPosition >= 1 && numberPosition <= 5) {
+                    try {
                         numbers[numberPosition - 1] = userNumber;
                         logger.info(Arrays.toString(numbers));
-                    } else {
-                        logger.error("You must choose a value between 1 and 5!");
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        logger.error("Error: " + e.getMessage());
                     }
                 } else {
                     logger.error("You must choose a value between 1 and 10!");
